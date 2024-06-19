@@ -60,7 +60,7 @@ encoded_image_transporte = get_image_base64("menu_principal/meiostransporte.gif"
 def pagina_profissoes():
     st.header("Profissões")
     if st.button("Voltar ao Menu Principal"):
-        st.session_state['pagina_atual'] = 'menu'
+        st.session_state.pagina_atual = 'menu'
     # Seleção da profissão
     profissao = st.selectbox("Escolha uma profissão:", list(profissoes_gifs.keys()))
     
@@ -76,7 +76,7 @@ def pagina_profissoes():
 def pagina_transportes():
     st.header("Meios de Transporte")
     if st.button("Voltar ao Menu Principal"):
-        st.session_state['pagina_atual'] = 'menu'
+        st.session_state.pagina_atual = 'menu'
     # Seleção da profissão
     transporte = st.selectbox("Escolha um meio de transporte:", list(transportes_gifs.keys()))
     
@@ -95,19 +95,19 @@ def menu_principal():
     with col1:
         st.image(encoded_image_profissoes, caption="Profissões", width=300)
         if st.button("Clique para Profissões", key="profissoes"):
-            st.session_state['pagina_atual'] = 'profissoes'
+            st.session_state.pagina_atual = 'profissoes'
     with col2:
         st.image(encoded_image_transporte, caption="Meio de Transporte", width=300)
         if st.button("Clique para Transportes", key="transportes"):
-            st.session_state['pagina_atual'] = 'transportes'
+            st.session_state.pagina_atual = 'transportes'
 
 # Gerenciar as páginas
 if 'pagina_atual' not in st.session_state:
-    st.session_state['pagina_atual'] = 'menu'
+    st.session_state.pagina_atual = 'menu'
 
-if st.session_state['pagina_atual'] == 'menu':
+if st.session_state.pagina_atual == 'menu':
     menu_principal()
-elif st.session_state['pagina_atual'] == 'profissoes':
+elif st.session_state.pagina_atual == 'profissoes':
     pagina_profissoes()
-elif st.session_state['pagina_atual'] == 'transportes':
+elif st.session_state.pagina_atual == 'transportes':
     pagina_transportes()
